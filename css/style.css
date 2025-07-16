@@ -1,0 +1,739 @@
+/*
+  Ici  j'ai defini les  variables de couleurs institutionnelles :
+  --main-blue : bleu principal (#105da1)
+  --main-green : vert accent (#639b42)
+*/
+:root {
+  --main-blue: #105da1;
+  --main-green: #639b42;
+}
+/*
+  Ici j'ai defini les marges et le padding par defaut pour tout les elements de la page ,le box-sizing pour que les marges et le padding ne soient pas pris en compte dans la taille des elements
+  et j'ai defini le box-sizing pour que les marges et le padding ne soient pas pris en compte dans la taille des elements
+*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  Police Orbitron (Google Fonts) je l'ai utilisée pour donner un aspect digital/technologique au header,
+  rappelant l'univers des interfaces cyber ou tech.
+*/
+.main-header, .main-header * {
+  font-family: 'Orbitron', Arial, sans-serif !important;
+}
+
+/* Conteneur principal du header */
+.main-header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+  position: relative;
+  border-bottom: 1px solid #f8f8f8;
+  z-index: 10;
+  margin-bottom: 0;
+}
+
+/* Structure interne du header : flex pour aligner logo, menu, actions */
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  height: 86px;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Bloc logo + titre institutionnel */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-logo {
+  height: 80px;
+}
+.header-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.header-title-main {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--main-blue); /* Bleu principal */
+}
+.header-title-sub {
+  font-size: 0.9rem;
+  color: #444;
+  letter-spacing: 0.5px;
+}
+
+/* Menu de navigation centré */
+.header-nav ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header-nav a {
+  text-decoration: none;
+  color: var(--main-blue); /* Bleu principal pour les liens */
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.2s;
+}
+/* Onglet actif ou survolé : vert accent et soulignement */
+.header-nav .active a,
+.header-nav a:hover {
+  color: var(--main-green); /* Vert accent au hover/actif */
+}
+.header-nav .active a::after,
+.header-nav a:hover::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--main-green); /* Soulignement vert */
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+}
+.chevron {
+  font-size: 0.8em;
+  margin-left: 4px;
+}
+
+/* Actions à droite : recherche + bouton connexion */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+}
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+}
+.login-btn {
+  border: 1.5px solid var(--main-green);
+  color: var(--main-green);
+  background: #fff;
+  padding: 7px 22px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.login-btn:hover {
+  background: var(--main-green);
+  color: #fff;
+}
+
+/* Responsive : header en colonne sur mobile */
+@media (max-width: 900px) {
+  .header-container {
+    flex-direction: column;
+    height: auto;
+    padding: 12px;
+    gap: 10px;
+  }
+  .header-nav ul {
+    gap: 18px;
+  }
+  .header-logo {
+    height: 36px;
+  }
+}
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    height: auto;
+  }
+  .header-nav ul {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+} 
+
+/*
+  Barre de navigation mobile en bas de l'écran (bottom-nav)
+  Affichée uniquement sur mobile, façon application, avec 4 icônes : Accueil, Membre, Finalistes, Infos
+*/
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* Masquer la nav principale et afficher la bottom nav sur mobile */
+  .header-nav {
+    display: none !important;
+  }
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+    border-top: 1.5px solid #e0e0e0;
+    z-index: 100;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.2rem 0;
+    height: 60px;
+  }
+  .bottom-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: color 0.2s;
+    padding: 0 2px;
+  }
+  .bottom-link svg {
+    margin-bottom: 2px;
+    display: block;
+  }
+  .bottom-link:active,
+  .bottom-link:focus,
+  .bottom-link:hover {
+    color: var(--main-green);
+  }
+  .bottom-link span {
+    font-size: 0.75rem;
+    margin-top: 1px;
+    letter-spacing: 0.5px;
+  }
+  /* Adapter le header pour ne pas être caché par la bottom nav */
+  body {
+    padding-bottom: 60px;
+  }
+  /* Afficher le burger menu à droite du header */
+  .burger-menu {
+    display: inline-flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    align-items: center;
+    padding: 6px;
+  }
+  /* Header top mobile : tout sur une ligne, logo + texte + recherche + burger */
+  .header-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 10px;
+    gap: 0;
+  }
+  .header-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-logo {
+    height: 36px;
+    min-width: 36px;
+  }
+  .header-title {
+    display: none;
+  }
+  .header-title-main {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .header-title-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.2px;
+  }
+  .header-right {
+    gap: 8px;
+  }
+  .search-btn {
+    padding: 2px;
+  }
+  .login-btn {
+    display: none;
+  }
+}
+
+/* Cacher le burger menu sur desktop */
+.burger-menu {
+  display: none;
+}
+@media (max-width: 900px) {
+  .burger-menu {
+    display: inline-flex;
+  }
+}
+
+/* Affichage du menu principal quand burger actif (option tablette) */
+.header-nav ul.show {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 86px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  z-index: 99;
+  gap: 0;
+}
+.header-nav ul.show li {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.7rem 0;
+  text-align: center;
+}
+.header-nav ul.show li:last-child {
+  border-bottom: none;
+} 
+
+/* Police Orbitron et style pour la bottom nav */
+.bottom-nav, .bottom-nav * {
+  font-family: 'Orbitron', Arial, sans-serif !important;
+}
+
+/* Lien bottom nav par défaut : bleu */
+.bottom-link {
+  color: var(--main-blue);
+}
+.bottom-link svg {
+  color: var(--main-blue);
+  fill: var(--main-blue);
+  transition: color 0.2s, fill 0.2s;
+}
+/* Lien actif : vert, icône et texte */
+.bottom-link.active, .bottom-link.active svg {
+  color: var(--main-green);
+  fill: var(--main-green);
+} 
+
+/* Menu modal mobile (slide up) */
+.mobile-menu-modal {
+
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+/* Le menu modal mobile est strictement masqué sur desktop ET tablette grâce à !important */
+@media (min-width: 701px) {
+  .mobile-menu-modal {
+    display: none !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
+}
+@media (min-width: 901px) {
+  .mobile-menu-modal {
+    display: none !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
+}
+.mobile-menu-modal.active {
+  display: block !important;
+  opacity: 1 !important;
+}
+.mobile-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
+}
+.mobile-menu-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  background-image: url('../img/synapse-bg.png');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  animation: slideUpMenu 0.35s cubic-bezier(.4,1.4,.6,1) both;
+  z-index: 2;
+}
+@keyframes slideUpMenu {
+  from { transform: translateY(100%); opacity: 0.5; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.mobile-menu-content nav ul {
+  list-style: none;
+  padding: 0;
+  padding-top: 2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: start;
+}
+.mobile-menu-content nav a {
+  color: var(--main-blue);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobile-menu-content nav a:hover {
+  color: var(--main-green);
+}
+.close-mobile-menu {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0e0e0;
+  font-size: 2rem;
+  color: var(--main-blue);
+  position: absolute;
+  top: -40px;
+  right: 18px;
+  cursor: pointer;
+  z-index: 3;
+}
+@media (min-width: 701px) {
+  .mobile-menu-modal { display: none !important; }
+} 
+
+/* Le bouton burger-menu est strictement masqué sur tablette et desktop */
+@media (min-width: 701px) {
+  .burger-menu {
+    display: none !important;
+  }
+} 
+
+/* Réduction de la taille du texte des liens nav sur petits ordinateurs (701px à 1024px) */
+@media (min-width: 701px) and (max-width: 1024px) {
+  .header-nav a {
+    font-size: 0.95rem;
+    padding: 6px 0;
+  }
+} 
+
+/* Ajustements pour tablette paysage (1024x1366) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .header-nav a {
+    font-size: 0.9rem;
+    padding: 5px 0;
+    white-space: nowrap; /* Empêche le retour à la ligne des liens nav */
+  }
+  .header-title {
+    display: none; /* Masque le texte à côté du logo */
+  }
+} 
+
+/* Ajustements pour écrans moyens (900px à 1024px, ex : 1009x644) */
+@media (min-width: 900px) and (max-width: 1024px) {
+  .header-nav a {
+    font-size: 0.9rem;
+    padding: 5px 0;
+    white-space: nowrap;
+  }
+  .header-title {
+    display: none;
+  }
+} 
+
+@media (max-width: 700px) {
+  /* .header-left prend toute la largeur en mobile */
+  .header-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .header-logo {
+    height: 28px;
+    min-width: 28px;
+  }
+  .header-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 2px;
+    margin-top: 0;
+  }
+  .header-title-main {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #444;
+    text-align: left;
+  }
+  .header-title-sub {
+    font-size: 0.54rem;
+    color: #888;
+    text-align: left;
+  }
+} 
+
+/* Affiche le burger menu et la bottom nav pour Surface Pro 7 (912px à 1024px) */
+@media (min-width: 912px) and (max-width: 1024px) {
+  .burger-menu {
+    display: inline-flex !important;
+  }
+  .bottom-nav {
+    display: flex !important;
+  }
+  .header-nav {
+    display: none !important;
+  }
+} 
+
+/* Correction bottom nav Surface Pro 7 (912px à 1024px) */
+@media (min-width: 912px) and (max-width: 1024px) {
+  .bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+    border-top: 1.5px solid #e0e0e0;
+    z-index: 100;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.2rem 0;
+    height: 60px;
+  }
+  .bottom-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-blue);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s;
+    padding: 0 2px;
+  }
+  .bottom-link svg {
+    margin-bottom: 2px;
+    display: block;
+    font-size: 1.3em;
+  }
+  .bottom-link:active,
+  .bottom-link:focus,
+  .bottom-link:hover {
+    color: var(--main-green);
+  }
+  .bottom-link span {
+    font-size: 0.8rem;
+    margin-top: 1px;
+    letter-spacing: 0.5px;
+  }
+  body {
+    padding-bottom: 60px;
+  }
+} 
+
+/* Style moderne pour le bouton burger */
+.burger-menu {
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 6px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s, border 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.burger-menu:hover, .burger-menu:focus {
+  border: 1.5px solid var(--main-green);
+  box-shadow: 0 4px 16px rgba(99,155,66,0.08);
+}
+.burger-menu svg {
+  display: block;
+  stroke: var(--main-blue);
+  transition: stroke 0.2s;
+}
+.burger-menu:hover svg, .burger-menu:focus svg {
+  stroke: var(--main-green);
+} 
+
+.mobile-menu-footer {
+  border-top: 1.5px solid #e0e0e0;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.98rem;
+  color: #444;
+  background: rgba(255,255,255,0.95);
+}
+.mobile-menu-footer .footer-info {
+  margin-bottom: 0.5rem;
+  font-size: 0.93rem;
+  color: #888;
+}
+.mobile-menu-footer .footer-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.mobile-menu-footer .login-btn,
+.mobile-menu-footer .login-btn2,
+.mobile-menu-footer .logout-btn {
+  border: 1.5px solid var(--main-green);
+  color: var(--main-green);
+  background: #fff;
+  padding: 7px 22px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-menu-footer .login-btn:hover,
+.mobile-menu-footer .logout-btn:hover {
+  background: var(--main-green);
+  color: #fff;
+}
+.mobile-menu-footer .user-info {
+  font-size: 0.98rem;
+  color: var(--main-blue);
+  font-weight: 600;
+} 
+
+.login-btn2 {
+  border: 1.5px solid var(--main-green);
+  color: var(--main-green);
+  background: #fff;
+  padding: 7px 22px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.login-btn2:hover, .login-btn2:focus {
+  background: var(--main-green);
+  color: #fff;
+} 
+
+.header-search-form {
+  position: absolute;
+  top: 100%;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(16,93,161,0.10);
+  border-radius: 32px;
+  padding: 0.5rem 1.2rem;
+  z-index: 200;
+  opacity: 0;
+  transform: translateY(-16px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(.4,1.4,.6,1), transform 0.25s cubic-bezier(.4,1.4,.6,1);
+}
+.header-search-form.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.header-search-input {
+  border: none;
+  outline: none;
+  font-size: 1.08rem;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  background: #f5f8fa;
+  color: #222;
+  min-width: 180px;
+  max-width: 260px;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(16,93,161,0.04);
+}
+.header-search-input:focus {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(16,93,161,0.10);
+}
+.close-search-btn {
+  background: none;
+  border: none;
+  color: var(--main-blue);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.close-search-btn:hover {
+  background: #f0f4f8;
+} 
+
+@media (max-width: 700px) {
+  .header-search-form {
+    position: fixed;
+    top: 60px;
+    left: 8px;
+    right: 8px;
+    width: calc(100vw - 16px);
+    max-width: none;
+    border-radius: 18px;
+    padding: 0.4rem 0.7rem;
+    box-shadow: 0 4px 24px rgba(16,93,161,0.13);
+    z-index: 1001;
+  }
+  .header-search-input {
+    min-width: 0;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.45rem 0.8rem;
+  }
+  .close-search-btn {
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    margin-left: 0.2rem;
+  }
+} 
