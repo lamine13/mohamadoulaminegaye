@@ -1,20 +1,23 @@
 [
-  {
-    "titre": "Coding Day 2025 : Inscriptions ouvertes",
-    "texte": "Les inscriptions pour le Coding Day 2025 sont maintenant ouvertes ! Rejoignez-nous pour cette compétition de programmation qui réunit les meilleurs talents de l'université.",
-    "date": "12 Jan 2025",
-    "image": "img/coding.jpeg"
-  },
-  {
-    "titre": "Formation en intelligence artificielle",
-    "texte": "Nouvelle formation en intelligence artificielle proposée par la Cellule Numérique. Découvrez les bases de l'IA et ses applications dans le monde moderne.",
-    "date": "10 Jan 2025",
-    "image": "img/im1.jpg"
-  },
-  {
-    "titre": "Partenariat avec l'écosystème tech sénégalais",
-    "texte": "La Cellule Numérique signe un partenariat stratégique avec l'écosystème tech sénégalais pour favoriser l'insertion professionnelle des étudiants dans le secteur numérique.",
-    "date": "8 Jan 2025",
-    "image": "img/im2.jpg"
-  }
+    {
+        "id": "actu_687947e9cf16c9.86061845",
+        "titre": "admin@codingday.sn",
+        "texte": "admin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.snadmin@codingday.sn",
+        "date": "2025-07-26",
+        "image": "img\/actu_687947e9cea529.36320112.png"
+    },
+    {
+        "id": "actu_687948413bd677.42134808",
+        "titre": "admin@codingday.sn",
+        "texte": "polaire",
+        "date": "2025-07-17",
+        "image": "img\/actu_687948413b9305.05311541.jpg"
+    },
+    {
+        "id": "actu_68794866b45bb8.91942057",
+        "titre": "testons P11",
+        "texte": "p1111idssdsdjkasdhkdskjhsdkhsjdakjdsahsdjhjdsksahdsshjsdlorem",
+        "date": "2025-07-17",
+        "image": "img\/actu_68794866b38405.53782005.jpg"
+    }
 ]

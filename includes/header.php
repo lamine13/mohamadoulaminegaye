@@ -34,6 +34,10 @@
                         <!-- LIEN À PROPOS - Page d'informations sur la Cellule Numérique -->
                         <li<?php if ($currentPage === 'a-propos.php') echo ' class="active"'; ?>><a
                                 href="./a-propos.php">À propos</a></li>
+                            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                            <li<?php if ($currentPage === 'ajouter_actualite.php') echo ' class="active"'; ?>><a
+                                    href="./ajouter_actualite.php">Ajouter une actualité</a></li>
+                                <?php endif; ?>
             </ul>
         </nav>
 
@@ -48,9 +52,17 @@
             </button>
 
             <!-- FORMULAIRE RECHERCHE - Interface de recherche avec champ de saisie -->
-            <form class="header-search-form" id="headerSearchForm" action="#" method="get" style="display:none;">
+            <form class="header-search-form" id="headerSearchForm" action="recherche.php" method="get"
+                style="display:none;">
                 <input type="text" name="q" class="header-search-input" placeholder="Rechercher..."
                     autocomplete="off" />
+                <button type="submit" class="search-submit-btn" aria-label="Rechercher"
+                    style="background:none;border:none;cursor:pointer;padding:0 8px;display:flex;align-items:center;">
+                    <svg width="20" height="20" fill="none" stroke="#105da1" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7" />
+                        <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                    </svg>
+                </button>
                 <button type="button" class="close-search-btn" id="closeSearchBtn"
                     aria-label="Fermer la recherche">&times;</button>
             </form>
@@ -104,10 +116,11 @@
             <ul>
                 <li><a href="./index.php">Accueil</a></li>
                 <li><a href="./accueil.php">Espace membre</a></li>
-                <li><a href="./finalistes.php">Finalistes</a></li>
                 <li><a href="./a-propos.php">À propos</a></li>
-                <li><a href="./infos.php">Infos</a></li>
-                <li><a href="./livre-or.php">Livre d'or</a></li>
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                <li<?php if ($currentPage === 'ajouter_actualite.php') echo ' class="active"'; ?>><a
+                        href="./ajouter_actualite.php">Ajouter une actualité</a></li>
+                    <?php endif; ?>
             </ul>
         </nav>
 

@@ -14,6 +14,7 @@
     body {
         min-height: 100vh;
         display: flex;
+
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -66,7 +67,8 @@
     </style>
 </head>
 
-<body>
+<body
+    style="background-image: url(img/bglam3.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <?php include './includes/header.php'; ?>
     <div class="maintenance-box">
         <h1>🚧 En cours de développement</h1>

@@ -157,6 +157,17 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeSearch();
 }); 
 
+// GESTION SOUMISSION RECHERCHE - Redirige vers recherche.php sur toutes les pages
+if (headerSearchForm) {
+  headerSearchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const input = headerSearchForm.querySelector('.header-search-input');
+    if (input && input.value.trim() !== '') {
+      window.location.href = 'recherche.php?q=' + encodeURIComponent(input.value.trim());
+    }
+  });
+}
+
 // GESTION LIVRE D'OR - Fonctionnalité de publication de messages communautaires
 document.addEventListener('DOMContentLoaded', function() {
     // SÉLECTION ÉLÉMENTS LIVRE D'OR - Récupération des éléments de l'interface

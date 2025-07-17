@@ -65,7 +65,7 @@ session_start();
             <a href="accueil.php" class="actus-link">Voir tout</a>
         </div>
         <div class="actus-cards-row">
-            <?php foreach ($actus as $actu): ?>
+            <?php foreach ($actus as $i => $actu): ?>
                 <div class="actus-card">
                     <div class="actus-card-img">
                         <img src="<?= htmlspecialchars($actu['image']) ?>" alt="<?= htmlspecialchars($actu['titre']) ?>">
@@ -75,8 +75,12 @@ session_start();
                             <span><?= htmlspecialchars($actu['date']) ?></span>
                         </div>
                         <h3 class="actus-card-title"><?= htmlspecialchars($actu['titre']) ?></h3>
-                        <p class="actus-card-desc"><?= htmlspecialchars($actu['texte']) ?></p>
-                        <a href="#" class="actus-card-btn">Lire plus</a>
+                        <p class="actus-card-desc"><?php
+                            $texte = isset($actu['texte']) ? $actu['texte'] : '';
+                            $texte_tronque = mb_strlen($texte) > 120 ? mb_substr($texte, 0, 120) . '…' : $texte;
+                            echo htmlspecialchars($texte_tronque);
+                        ?></p>
+                        <a href="actualite.php?id=<?= isset($actu['id']) ? urlencode($actu['id']) : $i ?>" class="actus-card-btn">Lire plus</a>
                     </div>
                 </div>
             <?php endforeach; ?>

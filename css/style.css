@@ -882,6 +882,10 @@
   flex: 3;
   padding: 2.8rem 2.2rem 2.2rem 2.2rem;
   display: flex;
+  /* background-image: url(../img/bglam2.jpg); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: 'Orbitron', Arial, sans-serif;
   flex-direction: column;
   justify-content: center;
@@ -2365,7 +2369,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 8px 32px rgba(16,93,161,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   padding: 2.5rem 1.5rem;
 }
 
@@ -2444,8 +2448,7 @@
 /* IMPACT */
 .impact-section {
   width: 100%;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
+
   padding: 2rem 0 1.5rem 0;
   display: flex;
   justify-content: center;
@@ -2690,4 +2693,109 @@
   background: var(--main-blue);
   color: #fff;
   border-color: var(--main-blue);
+}
+.form-section {
+  max-width: 520px;
+  margin: 4rem auto 2rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(16, 93, 161, 0.10);
+  padding: 2.5rem 2rem;
+}
+
+.form-section h1 {
+  color: #105da1;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  color: #105da1;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  background: #f7f9fa;
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-btn {
+  display: block;
+  width: 100%;
+  background: #105da1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+.form-btn:hover {
+  background: #639b42;
+}
+
+/* --- Responsivité des cartes d'actualités --- */
+.actus-card.suggestion .actus-card-title,
+.actus-card.suggestion .actus-card-desc {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.actus-card.suggestion .actus-card-desc {
+  white-space: pre-line;
+}
+
+@media (max-width: 600px) {
+  .actus-card.suggestion .actus-card-title {
+    font-size: 0.95rem;
+  }
+  .actus-card.suggestion .actus-card-desc {
+    font-size: 0.88rem;
+  }
+}
+
+/* Pour la carte principale */
+.actu-main-title, .actu-main-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.actu-main-text {
+  white-space: pre-line;
+}
+
+@media (max-width: 600px) {
+  .actu-main-title {
+    font-size: 1.05rem;
+  }
+  .actu-main-text {
+    font-size: 0.95rem;
+  }
 }

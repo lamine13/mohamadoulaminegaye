@@ -97,16 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <?php include __DIR__ . '/includes/header.php'; ?>
-    <main class="login-main">
+    <main class="login-main ">
         <div class="login-card-2col">
             <div class="login-img-col">
                 <img src="img/synapse-bg.png" alt="Décor login" class="login-img-bg">
-                <!-- <div class="login-img-text">
-                    Cellule Numérique (Dakar)
-                    Université Virtuelle du Sénégal
-                    <span class="login-img-tex-second">Innovation, </span> tradition et numérique<br>au service de la
-                    jeunesse africaine.
-                </div> -->
+
             </div>
             <div class="login-form-col">
                 <a href="./index.php" class="back-link">&larr; Retour à l'accueil</a>

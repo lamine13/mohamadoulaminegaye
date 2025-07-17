@@ -169,7 +169,7 @@ include __DIR__ . '/includes/header.php';
           if (is_array($actus) && count($actus) > 0) {
               echo '<div class="card" style="margin-bottom:0.5rem;"><h2 class="section-title"><svg width="22" height="22" fill="none" stroke="#105da1" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8v8H8z"/></svg>Actualités récentes</h2><div class="actus-cards-row">';
               $count = 0;
-              foreach (array_slice($actus, 0, 4) as $actu) {
+              foreach (array_slice($actus, 0, 10) as $actu) {
                   // Déterminer la catégorie basée sur le titre
                   $categorie = "Actualité";
                   if (stripos($actu['titre'], 'coding day') !== false || stripos($actu['titre'], 'événement') !== false) {
@@ -210,7 +210,8 @@ include __DIR__ . '/includes/header.php';
                   echo '</div>';
                   // Footer avec bouton
                   echo '<div class="actus-card-footer">';
-                  echo '<a href="#" class="actus-card-btn">Lire plus</a>';
+                  $actu_id = isset($actu['id']) ? urlencode($actu['id']) : $count;
+                  echo '<a href="actualite.php?id=' . $actu_id . '" class="actus-card-btn">Lire plus</a>';
                   echo '</div>';
                   echo '</div>';
                   echo '</div>';
