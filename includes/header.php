@@ -163,7 +163,7 @@
 <!-- Ce modal s'affiche en dropdown pour les écrans desktop et tablette -->
 <div id="userModal" class="user-modal" style="display:none;font-family: 'Orbitron', Arial, sans-serif;">
     <!-- ARRIÈRE-PLAN MODAL - Overlay pour fermer le modal -->
-    <div class="user-modal-backdrop"></div>
+
 
     <!-- CONTENU MODAL - Détails du compte utilisateur -->
     <div class="user-modal-content">
@@ -198,17 +198,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // FONCTION POSITIONNEMENT - Calcul de la position du dropdown utilisateur
     function positionDropdown() {
         if (!userBtn || !userModalContent) return;
-
-        // CALCUL POSITION - Détermination des coordonnées du bouton utilisateur
-        var rect = userBtn.getBoundingClientRect();
-        var scrollTop = window.scrollY || document.documentElement.scrollTop;
-        var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-
-        // POSITIONNEMENT ABSOLU - Placement du modal sous le bouton utilisateur
-        userModalContent.style.position = 'absolute';
-        userModalContent.style.left = (rect.left + scrollLeft) + 'px';
-        userModalContent.style.top = (rect.bottom + scrollTop + 8) + 'px';
-        userModalContent.style.margin = '0';
+        if (window.innerWidth > 700) {
+            userModalContent.style.position = 'fixed';
+            userModalContent.style.top = '90px';
+            userModalContent.style.right = '0';
+            userModalContent.style.left = '';
+            userModalContent.style.margin = '0';
+        } else {
+            userModalContent.style.position = '';
+            userModalContent.style.left = '';
+            userModalContent.style.top = '';
+            userModalContent.style.right = '';
+            userModalContent.style.margin = '';
+        }
     }
 
     // GESTION CLIC UTILISATEUR - Ouverture du modal utilisateur

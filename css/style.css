@@ -1159,14 +1159,12 @@
 .user-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.25);
+  background: transparent;
   z-index: 1;
 }
 .user-modal-content {
-  position: relative;
-  z-index: 2;
-  left: 50%;
-  transform: translateX(-50%);
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 8px 40px rgba(16,93,161,0.13);
@@ -1176,10 +1174,10 @@
   width: 100%;
   max-width: 340px;
   min-width: 220px;
-  overflow-x: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 !important;
 }
 .user-modal-close {
   position: absolute;

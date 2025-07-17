@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Ajouter une actualité - Cellule Numérique UN-CHK</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./img/logo.png">
     <style>
     .form-section {
         max-width: 520px;

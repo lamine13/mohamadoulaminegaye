@@ -14,6 +14,7 @@ Le projet répond à toutes les exigences du sujet :
 - Livre d'or (guestbook)
 - Interface responsive avec menu mobile
 - Stockage des données en fichiers JSON (aucune base de données requise)
+- **Fonctionnalité mot de passe oublié (forgot password) complète**
 
 ## Technologies utilisées
 - **HTML5**
@@ -37,27 +38,37 @@ Le projet répond à toutes les exigences du sujet :
 - Vérification des identifiants (hash sécurisé)
 - Création de session PHP à la connexion
 - Redirection vers `accueil.php` si succès, sinon message d'erreur
+- **Lien "Mot de passe oublié ?"** pour accéder à la récupération
 
-### 3. Accueil membre (`accueil.php`)
+### 3. Mot de passe oublié (`forgot_password.php` et `reset_password.php`)
+- Lien accessible depuis la page de connexion
+- Saisie de l'e-mail utilisateur
+- Si l'e-mail existe, un lien de réinitialisation sécurisé s'affiche à l'écran (valable 30 minutes)
+- L'utilisateur clique sur ce lien, choisit un nouveau mot de passe (avec confirmation)
+- Le mot de passe est mis à jour dans `users.json` (hashé)
+- **Expérience utilisateur moderne et message visuel attractif**
+- Pour la démo locale, le lien s'affiche à l'écran (pas d'envoi mail requis)
+
+### 4. Accueil membre (`accueil.php`)
 - Accessible uniquement si connecté
 - Affiche un message de bienvenue personnalisé
 - Bouton "Déconnexion" (détruit la session et redirige vers login)
 - Affiche les actualités (issues de `data/actualites.json`)
 - Affiche le livre d'or (messages de `data/guestbook.json`)
 
-### 4. Gestion des rôles
+### 5. Gestion des rôles
 - **Admin** :
   - Peut ajouter une actualité (`ajouter_actualite.php`)
   - Accès à un lien spécial dans le menu
 - **Utilisateur** :
   - Accès standard (lecture actualités, livre d'or)
 
-### 5. Livre d'or (Guestbook)
+### 6. Livre d'or (Guestbook)
 - Les membres peuvent laisser un message
 - Les messages sont stockés dans `data/guestbook.json`
 - Affichage dynamique des messages
 
-### 6. Responsive & Expérience mobile
+### 7. Responsive & Expérience mobile
 - Menu principal et menu bottom-nav mobile
 - Logo fourni (`img/logo.png`) intégré dans le header
 - Design moderne, police Orbitron, couleurs institutionnelles
@@ -69,6 +80,8 @@ Le projet répond à toutes les exigences du sujet :
 ├── index.php                # Page d'accueil publique
 ├── register.php             # Inscription
 ├── login.php                # Connexion
+├── forgot_password.php      # Mot de passe oublié (demande)
+├── reset_password.php       # Réinitialisation du mot de passe
 ├── accueil.php              # Accueil membre (protégé)
 ├── a-propos.php             # À propos
 ├── ajouter_actualite.php    # Ajout actualité (admin)
@@ -114,6 +127,13 @@ Pour tester les différentes fonctionnalités :
 - Inscrivez-vous avec un nouvel e-mail (rôle user)
 - Connectez-vous avec l'admin pour tester l'ajout d'actualités
 - Essayez d'accéder à `accueil.php` sans être connecté : vous serez redirigé vers la connexion
+- Testez la récupération de mot de passe avec un e-mail existant
+
+## Sécurité et expérience utilisateur
+- Les mots de passe sont hashés (jamais stockés en clair)
+- Les liens de réinitialisation sont uniques et expirent après 30 minutes
+- Les messages d’alerte et de succès sont visuels et rassurants
+- Aucune dépendance externe, tout fonctionne en local
 
 ## Suivi de l'évolution du projet
 Vous pouvez consulter l'historique des commits sur GitHub pour voir l'état d'évolution du projet depuis le début, comprendre les étapes de développement et les choix techniques réalisés.

@@ -25,6 +25,7 @@ if ($q !== '' && is_array($actus)) {
     <title>Recherche actualités - Cellule Numérique UN-CHK</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./img/logo.png">
 </head>
 <body>
 <?php include './includes/header.php'; ?>
