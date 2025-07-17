@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // RESTAURATION BOUTON - Retour à l'état initial après 2 secondes
             setTimeout(() => {
                 guestbookBtn.textContent = 'Publier un message';
-                guestbookBtn.style.background = 'linear-gradient(135deg, var(--main-blue) 0%, var(--main-green) 100%)';
+                guestbookBtn.style.background = 'var(--main-blue)'; // Couleur unie, plus de dégradé
             }, 2000);
         });
 

@@ -9,10 +9,10 @@
             <img src="./img/logo.png" alt="Logo" class="header-logo">
             <div class="header-title">
                 <span class="header-title-main">Cellule Numérique (Dakar)</span>
-                <span class="header-title-sub">Université Virtuelle du Sénégal</span>
+                <span class="header-title-sub">Université UNCHK</span>
             </div>
         </div>
-        
+
         <!-- NAVIGATION PRINCIPALE - Menu de navigation entre les pages du site -->
         <nav class="header-nav">
             <ul>
@@ -21,27 +21,22 @@
                 // Récupération du nom du fichier PHP actuel pour déterminer la page active
                 $currentPage = basename($_SERVER['PHP_SELF']);
                 ?>
-                
+
                 <!-- LIEN ACCUEIL PUBLIC - Page d'accueil accessible à tous les visiteurs -->
-                <li<?php if ($currentPage === 'index.php') echo ' class="active"'; ?>><a href="./index.php">Accueil</a></li>
-                
-                <!-- LIEN ESPACE MEMBRE - Zone sécurisée réservée aux utilisateurs connectés -->
-                <li<?php if ($currentPage === 'accueil.php') echo ' class="active"'; ?>><a href="./accueil.php">Espace membre</a></li>
-                
-                <!-- LIEN FINALISTES - Page présentant les finalistes des compétitions -->
-                <li<?php if ($currentPage === 'finalistes.php') echo ' class="active"'; ?>><a href="./finalistes.php">Finalistes</a></li>
-                
-                <!-- LIEN À PROPOS - Page d'informations sur la Cellule Numérique -->
-                <li<?php if ($currentPage === 'a-propos.php') echo ' class="active"'; ?>><a href="./a-propos.php">À propos</a></li>
-                
-                <!-- LIEN INFOS - Page d'informations générales et actualités -->
-                <li<?php if ($currentPage === 'infos.php') echo ' class="active"'; ?>><a href="./infos.php">Infos</a></li>
-                
-                <!-- LIEN LIVRE D'OR - Section de témoignages et partage communautaire -->
-                <li<?php if ($currentPage === 'livre-or.php') echo ' class="active"'; ?>><a href="./livre-or.php">Livre d'or</a></li>
+                <li<?php if ($currentPage === 'index.php') echo ' class="active"'; ?>><a href="./index.php">Accueil</a>
+                    </li>
+
+                    <!-- LIEN ESPACE MEMBRE - Zone sécurisée réservée aux utilisateurs connectés -->
+                    <li<?php if ($currentPage === 'accueil.php') echo ' class="active"'; ?>><a
+                            href="./accueil.php">Espace membre</a></li>
+
+
+                        <!-- LIEN À PROPOS - Page d'informations sur la Cellule Numérique -->
+                        <li<?php if ($currentPage === 'a-propos.php') echo ' class="active"'; ?>><a
+                                href="./a-propos.php">À propos</a></li>
             </ul>
         </nav>
-        
+
         <!-- SECTION UTILISATEUR - Éléments d'authentification et recherche -->
         <div class="header-right">
             <!-- BOUTON RECHERCHE - Activation du formulaire de recherche -->
@@ -51,7 +46,7 @@
                     <line x1="16.65" y1="16.65" x2="21" y2="21" />
                 </svg>
             </button>
-            
+
             <!-- FORMULAIRE RECHERCHE - Interface de recherche avec champ de saisie -->
             <form class="header-search-form" id="headerSearchForm" action="#" method="get" style="display:none;">
                 <input type="text" name="q" class="header-search-input" placeholder="Rechercher..."
@@ -59,7 +54,7 @@
                 <button type="button" class="close-search-btn" id="closeSearchBtn"
                     aria-label="Fermer la recherche">&times;</button>
             </form>
-            
+
             <!-- GESTION UTILISATEUR CONNECTÉ - Affichage des informations utilisateur -->
             <?php if (isset($_SESSION['user'])): ?>
             <!-- PROFIL UTILISATEUR - Affichage du nom et email de l'utilisateur connecté -->
@@ -83,7 +78,7 @@
             <!-- BOUTON CONNEXION - Lien vers la page de connexion pour les visiteurs non connectés -->
             <a href="./login.php" class="login-btn">Connexion</a>
             <?php endif; ?>
-            
+
             <!-- MENU BURGER MOBILE - Bouton de menu pour les appareils mobiles -->
             <button class="burger-menu" id="burgerMenuBtn" aria-label="Menu principal">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#105da1" stroke-width="2"
@@ -103,7 +98,7 @@
     <div class="mobile-menu-content">
         <!-- BOUTON FERMETURE - Fermeture du menu mobile -->
         <button class="close-mobile-menu" id="closeMobileMenu" aria-label="Fermer le menu">&times;</button>
-        
+
         <!-- NAVIGATION MOBILE - Menu de navigation adapté aux écrans tactiles -->
         <nav>
             <ul>
@@ -115,7 +110,7 @@
                 <li><a href="./livre-or.php">Livre d'or</a></li>
             </ul>
         </nav>
-        
+
         <!-- SECTION AUTHENTIFICATION MOBILE - Gestion de connexion/déconnexion -->
         <div class="mobile-menu-auth">
             <?php if (isset($_SESSION['user'])): ?>
@@ -139,7 +134,7 @@
             <a href="./login.php" class="login-btn2">Connexion</a>
             <?php endif; ?>
         </div>
-        
+
         <!-- PIED DE PAGE MOBILE - Informations de copyright -->
         <div class="mobile-menu-footer">
             <div class="footer-info">
@@ -156,22 +151,22 @@
 <div id="userModal" class="user-modal" style="display:none;font-family: 'Orbitron', Arial, sans-serif;">
     <!-- ARRIÈRE-PLAN MODAL - Overlay pour fermer le modal -->
     <div class="user-modal-backdrop"></div>
-    
+
     <!-- CONTENU MODAL - Détails du compte utilisateur -->
     <div class="user-modal-content">
         <!-- BOUTON FERMETURE - Fermeture du modal utilisateur -->
         <button class="user-modal-close" id="closeUserModal" aria-label="Fermer">&times;</button>
-        
+
         <!-- TITRE MODAL - En-tête du modal d'informations -->
         <h3>Détails du compte</h3>
-        
+
         <!-- INFORMATIONS UTILISATEUR - Affichage des données du compte -->
         <div class="user-modal-info">
             <div><strong>Pseudo :</strong> <?= htmlspecialchars($_SESSION['user']['username'] ?? '') ?></div>
             <div><strong>Email :</strong> <?= htmlspecialchars($_SESSION['user']['email'] ?? '') ?></div>
             <div><strong>Rôle :</strong> <?= htmlspecialchars($_SESSION['user']['role'] ?? 'Utilisateur') ?></div>
         </div>
-        
+
         <!-- BOUTON DÉCONNEXION - Déconnexion de l'utilisateur -->
         <a href="logout.php" class="logout-btn">Déconnexion</a>
     </div>
@@ -190,24 +185,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // FONCTION POSITIONNEMENT - Calcul de la position du dropdown utilisateur
     function positionDropdown() {
         if (!userBtn || !userModalContent) return;
-        
+
         // CALCUL POSITION - Détermination des coordonnées du bouton utilisateur
         var rect = userBtn.getBoundingClientRect();
         var scrollTop = window.scrollY || document.documentElement.scrollTop;
         var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-        
+
         // POSITIONNEMENT ABSOLU - Placement du modal sous le bouton utilisateur
         userModalContent.style.position = 'absolute';
         userModalContent.style.left = (rect.left + scrollLeft) + 'px';
         userModalContent.style.top = (rect.bottom + scrollTop + 8) + 'px';
         userModalContent.style.margin = '0';
     }
-    
+
     // GESTION CLIC UTILISATEUR - Ouverture du modal utilisateur
     if (userBtn && userModal) {
         userBtn.addEventListener('click', function(e) {
             userModal.style.display = 'block';
-            
+
             // ADAPTATION RESPONSIVE - Positionnement différent selon la taille d'écran
             if (window.innerWidth > 700) {
                 positionDropdown();
@@ -220,28 +215,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // GESTION FERMETURE MODAL - Fermeture via le bouton X
     if (closeUserModal && userModal) {
         closeUserModal.addEventListener('click', function() {
             userModal.style.display = 'none';
         });
     }
-    
+
     // GESTION CLIC ARRIÈRE-PLAN - Fermeture en cliquant à l'extérieur du modal
     if (userBackdrop && userModal) {
         userBackdrop.addEventListener('click', function() {
             userModal.style.display = 'none';
         });
     }
-    
+
     // GESTION TOUCHE ÉCHAP - Fermeture du modal avec la touche Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && userModal.style.display === 'block') {
             userModal.style.display = 'none';
         }
     });
-    
+
     // GESTION REDIMENSIONNEMENT - Repositionnement lors du changement de taille d'écran
     window.addEventListener('resize', function() {
         if (userModal.style.display === 'block' && window.innerWidth > 700) {

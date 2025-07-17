@@ -88,100 +88,6 @@ include __DIR__ . '/includes/header.php';
                         </div>
                     </div>
                 </div>
-                <?php
-                // CHARGEMENT DES ÉVÉNEMENTS - Lecture dynamique depuis le fichier JSON
-                // Chemin vers le fichier de données des événements
-                $events_path = __DIR__ . '/data/events.json';
-                
-                // VÉRIFICATION DE L'EXISTENCE - Contrôle si le fichier d'événements existe
-                if (file_exists($events_path)) {
-                    // DÉCODAGE JSON - Conversion des données JSON en tableau PHP
-                    $events = json_decode(file_get_contents($events_path), true);
-                    
-                    // VALIDATION DES DONNÉES - Vérification que les événements sont bien un tableau non vide
-                    if (is_array($events) && count($events) > 0) {
-                        // AFFICHAGE DE LA SECTION - Création du conteneur HTML pour les événements
-                        echo '<div class="card" style="margin-bottom:0.5rem;"><h2 class="section-title"><svg width="22" height="22" fill="none" stroke="#639b42" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Événements à venir</h2><div class="events-cards-row">';
-                        
-                        // COMPTEUR - Limitation à 4 événements maximum pour l'affichage
-                        $count = 0;
-                        
-                        // BOUCLE D'AFFICHAGE - Parcours des 4 premiers événements du tableau
-                        foreach (array_slice($events, 0, 4) as $event) {
-                            echo '<div class="event-card-modern">';
-                            echo '<div class="event-card-header">';
-                            echo '<h2 class="event-card-title">' . htmlspecialchars($event['titre']) . '</h2>';
-                            echo '</div>';
-                            echo '<div class="event-card-content">';
-                            // INFORMATIONS TEMPORELLES - Affichage de la date et heure de l'événement
-                            // Cette section affiche les détails temporels avec une icône de calendrier
-                            echo '<div class="event-card-info">';
-                            echo '<div class="event-info-item">';
-                            echo '<svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">';
-                            echo '<rect x="3" y="4" width="18" height="18" rx="2" />';
-                            echo '<path d="M16 2v4M8 2v4M3 10h18" />';
-                            echo '</svg>';
-                            echo '<span class="event-info-label">Date et heure</span>';
-                            echo '</div>';
-                            echo '<div class="event-info-value">' . htmlspecialchars($event['date']) . ', ' . htmlspecialchars($event['heure']) . '</div>';
-                            echo '</div>';
-                            // INFORMATIONS SPATIALES - Affichage du lieu et de l'adresse de l'événement
-                            // Cette section affiche les détails géographiques avec une icône de localisation
-                            echo '<div class="event-card-info">';
-                            echo '<div class="event-info-item">';
-                            echo '<svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">';
-                            echo '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />';
-                            echo '<circle cx="12" cy="10" r="3" />';
-                            echo '</svg>';
-                            echo '<span class="event-info-label">Lieu</span>';
-                            echo '</div>';
-                            echo '<div class="event-info-value">' . htmlspecialchars($event['lieu']) . ' — ' . htmlspecialchars($event['adresse']) . '</div>';
-                            echo '</div>';
-                            // CATÉGORISATION - Affichage du type d'événement (formation, conférence, etc.)
-                            // Cette section affiche la catégorie de l'événement avec une icône d'étoile
-                            echo '<div class="event-card-info">';
-                            echo '<div class="event-info-item">';
-                            echo '<svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">';
-                            echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />';
-                            echo '</svg>';
-                            echo '<span class="event-info-label">Type d\'événement</span>';
-                            echo '</div>';
-                            echo '<div class="event-info-value">' . htmlspecialchars($event['type']) . '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                            // PIED DE CARTE - Section finale avec référence et disponibilité
-                            // Cette section affiche l'identifiant unique et les places disponibles
-                            echo '<div class="event-card-footer">';
-                            // RÉFÉRENCE UNIQUE - Affichage de l'identifiant de l'événement
-                            echo '<div class="event-ref">';
-                            echo '<svg width="16" height="16" fill="#fff" viewBox="0 0 24 24">';
-                            echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />';
-                            echo '</svg>';
-                            echo '<div class="event-ref-text">';
-                            echo '<span class="event-ref-label">Ref :</span>';
-                            echo '<span class="event-ref-number">' . htmlspecialchars($event['id']) . '</span>';
-                            echo '</div>';
-                            echo '</div>';
-                            // GESTION DES PLACES - Affichage conditionnel du nombre de places disponibles
-                            // Si l'inscription est requise, on affiche le nombre de places restantes
-                            if ($event['inscription_requise']) {
-                                echo '<div class="event-countdown">';
-                                echo '<svg width="16" height="16" fill="#fff" viewBox="0 0 24 24">';
-                                echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />';
-                                echo '</svg>';
-                                echo '<span class="event-countdown-text">' . $event['places_disponibles'] . ' places</span>';
-                                echo '</div>';
-                            }
-                            echo '</div>';
-                            echo '</div>';
-                            // INCrémentation du compteur et limitation à 4 événements maximum
-                            $count++;
-                            if ($count >= 4) break;
-                        }
-                        echo '</div></div>';
-                    }
-                }
-                ?>
 
                 <!-- SECTION LIVRE D'OR - Interface de partage communautaire -->
                 <!-- Cette section permet aux utilisateurs de partager leurs expériences et témoignages -->
@@ -315,7 +221,6 @@ include __DIR__ . '/includes/header.php';
           }
       }
       ?>
-            </section>
         </div>
     </main>
     <?php if (file_exists(__DIR__ . '/includes/footer.php')) include __DIR__ . '/includes/footer.php'; ?>
