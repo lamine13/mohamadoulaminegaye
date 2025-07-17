@@ -1,9 +1,17 @@
 <?php
+// DÉMARRAGE DE LA SESSION - Vérification de l'authentification utilisateur
+// Cette ligne initialise la session PHP pour gérer les données utilisateur connecté
 session_start();
+
+// SÉCURITÉ - Contrôle d'accès à l'espace membre
+// Si l'utilisateur n'est pas connecté (pas de session 'user'), redirection vers la page de connexion
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit;
 }
+
+// INCLUSION DU HEADER - Chargement de l'en-tête commun à toutes les pages
+// Le header contient la navigation, le logo et les éléments d'interface utilisateur
 include __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
@@ -20,7 +28,8 @@ include __DIR__ . '/includes/header.php';
 <body>
     <main class="dashboard-main">
         <div class="dashboard-grid">
-            <!-- Colonne gauche -->
+            <!-- LAYOUT PRINCIPAL - Section principale du tableau de bord -->
+            <!-- Cette section contient tous les éléments de l'interface utilisateur de l'espace membre -->
             <section>
                 <div class="dashboard-welcome card">
                     <h1>Bienvenue, <?= htmlspecialchars($_SESSION['user']['username']) ?> !</h1>
@@ -80,19 +89,32 @@ include __DIR__ . '/includes/header.php';
                     </div>
                 </div>
                 <?php
+                // CHARGEMENT DES ÉVÉNEMENTS - Lecture dynamique depuis le fichier JSON
+                // Chemin vers le fichier de données des événements
                 $events_path = __DIR__ . '/data/events.json';
+                
+                // VÉRIFICATION DE L'EXISTENCE - Contrôle si le fichier d'événements existe
                 if (file_exists($events_path)) {
+                    // DÉCODAGE JSON - Conversion des données JSON en tableau PHP
                     $events = json_decode(file_get_contents($events_path), true);
+                    
+                    // VALIDATION DES DONNÉES - Vérification que les événements sont bien un tableau non vide
                     if (is_array($events) && count($events) > 0) {
+                        // AFFICHAGE DE LA SECTION - Création du conteneur HTML pour les événements
                         echo '<div class="card" style="margin-bottom:0.5rem;"><h2 class="section-title"><svg width="22" height="22" fill="none" stroke="#639b42" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Événements à venir</h2><div class="events-cards-row">';
+                        
+                        // COMPTEUR - Limitation à 4 événements maximum pour l'affichage
                         $count = 0;
+                        
+                        // BOUCLE D'AFFICHAGE - Parcours des 4 premiers événements du tableau
                         foreach (array_slice($events, 0, 4) as $event) {
                             echo '<div class="event-card-modern">';
                             echo '<div class="event-card-header">';
                             echo '<h2 class="event-card-title">' . htmlspecialchars($event['titre']) . '</h2>';
                             echo '</div>';
                             echo '<div class="event-card-content">';
-                            // Date et heure
+                            // INFORMATIONS TEMPORELLES - Affichage de la date et heure de l'événement
+                            // Cette section affiche les détails temporels avec une icône de calendrier
                             echo '<div class="event-card-info">';
                             echo '<div class="event-info-item">';
                             echo '<svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">';
@@ -103,7 +125,8 @@ include __DIR__ . '/includes/header.php';
                             echo '</div>';
                             echo '<div class="event-info-value">' . htmlspecialchars($event['date']) . ', ' . htmlspecialchars($event['heure']) . '</div>';
                             echo '</div>';
-                            // Lieu
+                            // INFORMATIONS SPATIALES - Affichage du lieu et de l'adresse de l'événement
+                            // Cette section affiche les détails géographiques avec une icône de localisation
                             echo '<div class="event-card-info">';
                             echo '<div class="event-info-item">';
                             echo '<svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">';
@@ -114,7 +137,8 @@ include __DIR__ . '/includes/header.php';
                             echo '</div>';
                             echo '<div class="event-info-value">' . htmlspecialchars($event['lieu']) . ' — ' . htmlspecialchars($event['adresse']) . '</div>';
                             echo '</div>';
-                            // Type d'événement
+                            // CATÉGORISATION - Affichage du type d'événement (formation, conférence, etc.)
+                            // Cette section affiche la catégorie de l'événement avec une icône d'étoile
                             echo '<div class="event-card-info">';
                             echo '<div class="event-info-item">';
                             echo '<svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">';
@@ -125,7 +149,10 @@ include __DIR__ . '/includes/header.php';
                             echo '<div class="event-info-value">' . htmlspecialchars($event['type']) . '</div>';
                             echo '</div>';
                             echo '</div>';
+                            // PIED DE CARTE - Section finale avec référence et disponibilité
+                            // Cette section affiche l'identifiant unique et les places disponibles
                             echo '<div class="event-card-footer">';
+                            // RÉFÉRENCE UNIQUE - Affichage de l'identifiant de l'événement
                             echo '<div class="event-ref">';
                             echo '<svg width="16" height="16" fill="#fff" viewBox="0 0 24 24">';
                             echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />';
@@ -135,6 +162,8 @@ include __DIR__ . '/includes/header.php';
                             echo '<span class="event-ref-number">' . htmlspecialchars($event['id']) . '</span>';
                             echo '</div>';
                             echo '</div>';
+                            // GESTION DES PLACES - Affichage conditionnel du nombre de places disponibles
+                            // Si l'inscription est requise, on affiche le nombre de places restantes
                             if ($event['inscription_requise']) {
                                 echo '<div class="event-countdown">';
                                 echo '<svg width="16" height="16" fill="#fff" viewBox="0 0 24 24">';
@@ -145,6 +174,7 @@ include __DIR__ . '/includes/header.php';
                             }
                             echo '</div>';
                             echo '</div>';
+                            // INCrémentation du compteur et limitation à 4 événements maximum
                             $count++;
                             if ($count >= 4) break;
                         }
@@ -153,7 +183,8 @@ include __DIR__ . '/includes/header.php';
                 }
                 ?>
 
-                <!-- Section Livre d'or -->
+                <!-- SECTION LIVRE D'OR - Interface de partage communautaire -->
+                <!-- Cette section permet aux utilisateurs de partager leurs expériences et témoignages -->
                 <div class="card" style="margin-bottom:0.5rem;">
                     <h2 class="section-title">
                         <svg width="22" height="22" fill="none" stroke="#105da1" stroke-width="2" viewBox="0 0 24 24">
@@ -170,24 +201,42 @@ include __DIR__ . '/includes/header.php';
                         </div>
                         <div class="guestbook-messages">
                             <?php
+                            // CHARGEMENT DES MESSAGES - Lecture des messages du livre d'or depuis le fichier JSON
                             $guestbook_path = __DIR__ . '/data/guestbook.json';
+                            
+                            // VÉRIFICATION DE L'EXISTENCE - Contrôle si le fichier de messages existe
                             if (file_exists($guestbook_path)) {
+                                // DÉCODAGE JSON - Conversion des messages JSON en tableau PHP
                                 $guestbook_messages = json_decode(file_get_contents($guestbook_path), true);
+                                
+                                // VALIDATION DES DONNÉES - Vérification que les messages sont bien un tableau non vide
                                 if (is_array($guestbook_messages) && count($guestbook_messages) > 0) {
+                                    // BOUCLE D'AFFICHAGE - Parcours des 5 derniers messages
                                     foreach (array_slice($guestbook_messages, 0, 5) as $msg) {
-                                        // Calculer le temps écoulé
+                                        // CALCUL TEMPOREL - Détermination du temps écoulé depuis la publication
+                                        // Création d'un objet DateTime pour la date du message
                                         $message_date = new DateTime($msg['date'] . ' ' . $msg['time']);
+                                        // Récupération de la date et heure actuelles
                                         $now = new DateTime();
+                                        // Calcul de la différence entre maintenant et la date du message
                                         $interval = $now->diff($message_date);
                                         
+                                        // FORMATAGE TEMPOREL - Conversion de l'intervalle en texte lisible
+                                        // Initialisation de la variable pour stocker le temps écoulé
                                         $time_ago = '';
+                                        
+                                        // HIÉRARCHIE TEMPORELLE - Affichage selon l'importance de l'intervalle
                                         if ($interval->days > 0) {
+                                            // Si plus d'un jour, affichage en jours avec gestion du pluriel
                                             $time_ago = 'Il y a ' . $interval->days . ' jour' . ($interval->days > 1 ? 's' : '');
                                         } elseif ($interval->h > 0) {
+                                            // Si plus d'une heure, affichage en heures avec gestion du pluriel
                                             $time_ago = 'Il y a ' . $interval->h . ' heure' . ($interval->h > 1 ? 's' : '');
                                         } elseif ($interval->i > 0) {
+                                            // Si plus d'une minute, affichage en minutes avec gestion du pluriel
                                             $time_ago = 'Il y a ' . $interval->i . ' minute' . ($interval->i > 1 ? 's' : '');
                                         } else {
+                                            // Si moins d'une minute, affichage "À l'instant"
                                             $time_ago = 'À l\'instant';
                                         }
                                         
