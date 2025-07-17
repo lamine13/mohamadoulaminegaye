@@ -114,7 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="password">Mot de passe</label>
                     <input type="password" id="password" name="password" required>
                     <div class="login-actions">
-                        <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                        <p style="margin-top:1rem;text-align:center;">
+                            <a href="forgot_password.php" class="forgot-link">Mot de passe oublié ?</a>
+                        </p>
                     </div>
                     <button type="submit" class="login-main-btn">Se connecter</button>
                 </form>
@@ -128,6 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?= htmlspecialchars($logoutMsg) ?>
                 </div>
                 <?php endif; ?>
+
             </div>
         </div>
     </main>

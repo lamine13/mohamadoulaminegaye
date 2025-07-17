@@ -103,7 +103,9 @@ Aucune base de données n'est requise : toutes les données sont stockées dans 
 
 ## Gestion des rôles et tests
 - **admin** :
-  - Identifiants par défaut dans `data/users.json` (voir champ `role: "admin"`)
+  - Identifiants de test :
+    - **E-mail** : admin@codingday.sn
+    - **Mot de passe** : email (mot de passe simple pour la démo)
   - Peut ajouter des actualités
 - **user** :
   - Peut s'inscrire, se connecter, poster dans le livre d'or, lire les actualités
@@ -112,6 +114,9 @@ Pour tester les différentes fonctionnalités :
 - Inscrivez-vous avec un nouvel e-mail (rôle user)
 - Connectez-vous avec l'admin pour tester l'ajout d'actualités
 - Essayez d'accéder à `accueil.php` sans être connecté : vous serez redirigé vers la connexion
+
+## Suivi de l'évolution du projet
+Vous pouvez consulter l'historique des commits sur GitHub pour voir l'état d'évolution du projet depuis le début, comprendre les étapes de développement et les choix techniques réalisés.
 
 ## Contraintes respectées
 - Projet 100% fonctionnel sous serveur local (XAMPP/MAMP/WAMP)
