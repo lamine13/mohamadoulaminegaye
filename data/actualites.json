@@ -1,0 +1,20 @@
+[
+  {
+    "titre": "Coding Day 2025 : Inscriptions ouvertes",
+    "texte": "Les inscriptions pour le Coding Day 2025 sont maintenant ouvertes ! Rejoignez-nous pour cette compétition de programmation qui réunit les meilleurs talents de l'université.",
+    "date": "12 Jan 2025",
+    "image": "img/coding.jpeg"
+  },
+  {
+    "titre": "Formation en intelligence artificielle",
+    "texte": "Nouvelle formation en intelligence artificielle proposée par la Cellule Numérique. Découvrez les bases de l'IA et ses applications dans le monde moderne.",
+    "date": "10 Jan 2025",
+    "image": "img/im1.jpg"
+  },
+  {
+    "titre": "Partenariat avec l'écosystème tech sénégalais",
+    "texte": "La Cellule Numérique signe un partenariat stratégique avec l'écosystème tech sénégalais pour favoriser l'insertion professionnelle des étudiants dans le secteur numérique.",
+    "date": "8 Jan 2025",
+    "image": "img/im2.jpg"
+  }
+]

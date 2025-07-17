@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CD_2025_001",
+    "titre": "Coding Day – Grande Finale",
+    "date": "19 juillet 2025",
+    "heure": "9h00",
+    "lieu": "École Nationale d'Organisation",
+    "adresse": "ENO de Dakar",
+    "type": "Compétition technologique",
+    "description": "La grande finale du Coding Day 2025 avec des équipes de développeurs en compétition",
+    "image": "",
+    "statut": "à venir",
+    "places_disponibles": 50,
+    "inscription_requise": true
+  },
+  {
+    "id": "WF_2025_002",
+    "titre": "Workshop Web Development",
+    "date": "25 juillet 2025",
+    "heure": "14h00",
+    "lieu": "Campus Numérique",
+    "adresse": "Université Cheikh Anta Diop",
+    "type": "Formation",
+    "description": "Formation intensive sur les technologies web modernes",
+    "image": "",
+    "statut": "à venir",
+    "places_disponibles": 30,
+    "inscription_requise": true
+  },
+  {
+    "id": "HC_2025_003",
+    "titre": "Hackathon Innovation",
+    "date": "2 août 2025",
+    "heure": "10h00",
+    "lieu": "Tech Hub Dakar",
+    "adresse": "Zone 4, Dakar",
+    "type": "Hackathon",
+    "description": "48h de développement intensif pour créer des solutions innovantes",
+    "image": "",
+    "statut": "à venir",
+    "places_disponibles": 100,
+    "inscription_requise": true
+  },
+  {
+    "id": "CF_2025_004",
+    "titre": "Conférence IA & Machine Learning",
+    "date": "10 août 2025",
+    "heure": "16h00",
+    "lieu": "Auditorium Principal",
+    "adresse": "Université Cheikh Anta Diop",
+    "type": "Conférence",
+    "description": "Découvrez les dernières avancées en intelligence artificielle",
+    "image": "",
+    "statut": "à venir",
+    "places_disponibles": 200,
+    "inscription_requise": false
+  }
+]
