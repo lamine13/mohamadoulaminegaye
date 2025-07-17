@@ -16,11 +16,8 @@ Voici quelques captures d’écran de l’application :
 ### Page Login
 ![Login](img/screenshot-login.png)
 
-### Page d’accueil Responsive
-![Login](img/screenshot-home-resp.png)
-
-### Menu Burger Responsives
-![Login](img/screenshot-burger.png)
+### Responsive
+![Responsivité](img/responsive.png)
 
 ## Auteur
 **Mohamadou Lamine Gaye**
