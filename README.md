@@ -1,5 +1,18 @@
 # Plateforme Cellule Numérique UN-CHK
 
+## Aperçu visuel
+
+Voici quelques captures d’écran de l’application :
+
+### Page d’accueil
+![Accueil](img/screenshot-accueil.png)
+
+### Page Ajout Actualité (Admin)
+![Actualité](img/screenshot-add-actu.png)
+
+### Page Membres
+![Espace Membre](img/screenshot-accueil_.png)
+
 ## Auteur
 **Mohamadou Lamine Gaye**
 
