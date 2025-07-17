@@ -35,14 +35,10 @@ error_log("Message reçu: " . $message);
 // Générer un ID unique
 $id = 'GB_' . date('Y') . '_' . str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT);
 
-// Générer des données aléatoires pour l'auteur
-$firstNames = ['Alex', 'Bakary', 'Camara', 'Diop', 'Elise', 'Fatou', 'Gueye', 'Hawa', 'Ibrahima', 'Jules', 'Kadiatou', 'Lamine', 'Mariama', 'Ndiaye', 'Ousmane'];
-$lastNames = ['Diallo', 'Sall', 'Gueye', 'Diop', 'Fall', 'Ba', 'Ndiaye', 'Cisse', 'Toure', 'Sy', 'Thiam', 'Mane', 'Sow', 'Dia', 'Kane'];
-
-$firstName = $firstNames[array_rand($firstNames)];
-$lastName = $lastNames[array_rand($lastNames)];
-$author = $firstName . ' ' . $lastName;
-$initials = strtoupper(substr($firstName, 0, 1) . substr($lastName, 0, 1));
+// Utiliser le pseudo de l'utilisateur connecté
+session_start();
+$author = isset($_SESSION['user']['username']) ? $_SESSION['user']['username'] : 'Anonyme';
+$initials = strtoupper(substr($author, 0, 2));
 
 // Créer le nouveau message
 $newMessage = [

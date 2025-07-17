@@ -202,9 +202,9 @@ function createGuestbookMessage(message) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'guestbook-message';
     
-    // Générer des initiales aléatoires
-    const initials = generateRandomInitials();
-    const authorName = generateRandomName();
+    // Utiliser le pseudo de l'utilisateur connecté (sera remplacé par le serveur)
+    const initials = 'U'; // Temporaire, sera remplacé par le serveur
+    const authorName = 'Utilisateur'; // Temporaire, sera remplacé par le serveur
     
     messageDiv.innerHTML = `
         <div class="guestbook-avatar">${initials}</div>
@@ -218,20 +218,7 @@ function createGuestbookMessage(message) {
     return messageDiv;
 }
 
-function generateRandomInitials() {
-    const firstNames = ['AL', 'BK', 'CM', 'DN', 'EP', 'FQ', 'GR', 'HS', 'IT', 'JU', 'KV', 'LW', 'MX', 'NY', 'OZ'];
-    return firstNames[Math.floor(Math.random() * firstNames.length)];
-}
 
-function generateRandomName() {
-    const firstNames = ['Alex', 'Bakary', 'Camara', 'Diop', 'Elise', 'Fatou', 'Gueye', 'Hawa', 'Ibrahima', 'Jules', 'Kadiatou', 'Lamine', 'Mariama', 'Ndiaye', 'Ousmane'];
-    const lastNames = ['Diallo', 'Sall', 'Gueye', 'Diop', 'Fall', 'Ba', 'Ndiaye', 'Cisse', 'Toure', 'Sy', 'Thiam', 'Mane', 'Sow', 'Dia', 'Kane'];
-    
-    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-    const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-    
-    return `${firstName} ${lastName}`;
-}
 
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -258,6 +245,11 @@ function saveGuestbookMessage(message, messageElement) {
     .then(data => {
         console.log('Données reçues:', data);
         if (data.success) {
+            // Mettre à jour le message avec les vraies données du serveur
+            const serverMessage = data.message;
+            messageElement.querySelector('.guestbook-avatar').textContent = serverMessage.initials;
+            messageElement.querySelector('.guestbook-author').textContent = serverMessage.author;
+            
             // Ajouter le message au début de la liste
             const guestbookMessages = document.querySelector('.guestbook-messages');
             guestbookMessages.insertBefore(messageElement, guestbookMessages.firstChild);
@@ -284,7 +276,7 @@ function saveGuestbookMessage(message, messageElement) {
             setTimeout(() => {
                 guestbookBtn.disabled = false;
                 guestbookBtn.textContent = 'Publier un message';
-                guestbookBtn.style.background = 'linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue) 100%)';
+                guestbookBtn.style.background = 'linear-gradient(135deg, var(--main-blue) 0%, var(--main-green) 100%)';
             }, 2000);
         } else {
             console.error('Erreur lors de la sauvegarde:', data.error);
