@@ -52,44 +52,34 @@ session_start();
     </section>
 
     <!-- ACTUALITÉS -->
+    <?php
+    $actus = [];
+    $actus_json = @file_get_contents('data/actualites.json');
+    if ($actus_json) {
+        $actus = json_decode($actus_json, true);
+    }
+    ?>
     <section class="actus-section">
         <div class="actus-header">
             <h2>Actualités récentes</h2>
             <a href="accueil.php" class="actus-link">Voir tout</a>
         </div>
         <div class="actus-cards-row">
-            <!-- Exemple de carte actualité -->
-            <div class="actus-card">
-                <div class="actus-card-img">
-                    <img src="img/synapse-bg.jpg" alt="Coding Day">
-                </div>
-                <div class="actus-card-content">
-                    <div class="actus-card-meta">
-                        <span>12/06/2024</span>
-                        <span>Événement</span>
+            <?php foreach ($actus as $actu): ?>
+                <div class="actus-card">
+                    <div class="actus-card-img">
+                        <img src="<?= htmlspecialchars($actu['image']) ?>" alt="<?= htmlspecialchars($actu['titre']) ?>">
                     </div>
-                    <h3 class="actus-card-title">Retour sur le Coding Day 2024</h3>
-                    <p class="actus-card-desc">Une journée d’innovation, de challenges et de rencontres autour du
-                        numérique à l’UN-CHK.</p>
-                    <a href="#" class="actus-card-btn">Lire plus</a>
-                </div>
-            </div>
-            <!-- Duplique la carte pour d'autres actualités -->
-            <div class="actus-card">
-                <div class="actus-card-img">
-                    <img src="img/synapse-login.png" alt="Formation">
-                </div>
-                <div class="actus-card-content">
-                    <div class="actus-card-meta">
-                        <span>05/06/2024</span>
-                        <span>Formation</span>
+                    <div class="actus-card-content">
+                        <div class="actus-card-meta">
+                            <span><?= htmlspecialchars($actu['date']) ?></span>
+                        </div>
+                        <h3 class="actus-card-title"><?= htmlspecialchars($actu['titre']) ?></h3>
+                        <p class="actus-card-desc"><?= htmlspecialchars($actu['texte']) ?></p>
+                        <a href="#" class="actus-card-btn">Lire plus</a>
                     </div>
-                    <h3 class="actus-card-title">Nouvelle formation Python</h3>
-                    <p class="actus-card-desc">Inscrivez-vous à notre prochaine session d’initiation à la programmation
-                        Python.</p>
-                    <a href="#" class="actus-card-btn">Lire plus</a>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </section>
 
