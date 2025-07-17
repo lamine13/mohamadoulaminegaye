@@ -2444,7 +2444,8 @@
 /* IMPACT */
 .impact-section {
   width: 100%;
-  background: #f8fafc;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   padding: 2rem 0 1.5rem 0;
   display: flex;
   justify-content: center;
@@ -2589,7 +2590,7 @@
 /* CTA */
 .cta-section {
   width: 100%;
-  background: linear-gradient(90deg, #105da1 0%, #639b42 100%);
+  background: #232637;
   padding: 2.5rem 0;
   display: flex;
   justify-content: center;
