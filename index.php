@@ -52,6 +52,53 @@ session_start();
         </div>
     </section>
 
+    <!-- EVENEMENTS A VENIR -->
+    <?php
+    $events = [];
+    $events_json = @file_get_contents('data/events.json');
+    if ($events_json) {
+        $events = json_decode($events_json, true);
+    }
+    ?>
+    <section class="actus-section">
+        <div class="actus-header">
+            <h2>Événements à venir</h2>
+            <a href="accueil.php" class="actus-link">Voir tout</a>
+        </div>
+        <div class="actus-cards-row">
+            <?php 
+            $count = 0;
+            foreach ($events as $i => $event): 
+                if ($count >= 3) break;
+            ?>
+                <div class="actus-card">
+                    <div class="actus-card-img">
+                        <?php if (!empty($event['image'])): ?>
+                            <img src="<?= htmlspecialchars($event['image']) ?>" alt="<?= htmlspecialchars($event['titre']) ?>">
+                        <?php else: ?>
+                            <div style="width:100%;height:100%;background:linear-gradient(135deg,#639b42 0%,#105da1 100%);"></div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="actus-card-content">
+                        <div class="actus-card-meta">
+                            <span><?= htmlspecialchars($event['date']) ?> à <?= htmlspecialchars($event['heure']) ?></span>
+                            <span style="margin-left:10px;">Lieu : <?= htmlspecialchars($event['lieu']) ?></span>
+                        </div>
+                        <h3 class="actus-card-title"><?= htmlspecialchars($event['titre']) ?></h3>
+                        <p class="actus-card-desc"><?php
+                            $desc = isset($event['description']) ? $event['description'] : '';
+                            $desc_tronque = mb_strlen($desc) > 120 ? mb_substr($desc, 0, 120) . '…' : $desc;
+                            echo htmlspecialchars($desc_tronque);
+                        ?></p>
+                    </div>
+                </div>
+            <?php 
+                $count++;
+            endforeach; 
+            ?>
+        </div>
+    </section>
+
     <!-- ACTUALITÉS -->
     <?php
     $actus = [];

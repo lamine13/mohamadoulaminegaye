@@ -35,8 +35,13 @@
                         <li<?php if ($currentPage === 'a-propos.php') echo ' class="active"'; ?>><a
                                 href="./a-propos.php">À propos</a></li>
                             <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
-                            <li<?php if ($currentPage === 'ajouter_actualite.php') echo ' class="active"'; ?>><a
-                                    href="./ajouter_actualite.php">Ajouter une actualité</a></li>
+                            <li class="dropdown-ajout<?php if ($currentPage === 'ajouter_actualite.php' || $currentPage === 'ajouter_evenement.php') echo ' active'; ?>">
+                                <a href="#" onclick="return false;">Ajout <svg style="vertical-align:middle;margin-left:4px;" width="14" height="14" fill="none" stroke="#105da1" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+                                <ul class="dropdown-ajout-menu">
+                                    <li><a href="./ajouter_actualite.php">Ajouter une actualité</a></li>
+                                    <li><a href="./ajouter_evenement.php">Ajouter un événement</a></li>
+                                </ul>
+                            </li>
                                 <?php endif; ?>
             </ul>
         </nav>
@@ -120,7 +125,8 @@
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
                 <li<?php if ($currentPage === 'ajouter_actualite.php') echo ' class="active"'; ?>><a
                         href="./ajouter_actualite.php">Ajouter une actualité</a></li>
-                    <?php endif; ?>
+                <li<?php if ($currentPage === 'ajouter_evenement.php') echo ' class="active"'; ?>><a href="./ajouter_evenement.php">Ajouter un événement</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
 
@@ -260,3 +266,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<style>
+.header-nav .dropdown-ajout {
+    position: relative;
+}
+.header-nav .dropdown-ajout-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(16,93,161,0.07);
+    border-radius: 0 0 10px 10px;
+    min-width: 180px;
+    z-index: 999;
+    padding: 0.5rem 0;
+}
+.header-nav .dropdown-ajout:hover .dropdown-ajout-menu,
+.header-nav .dropdown-ajout:focus-within .dropdown-ajout-menu {
+    display: block;
+}
+.header-nav .dropdown-ajout-menu li {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0.7rem 1.2rem;
+    text-align: left;
+    background: #fff;
+}
+.header-nav .dropdown-ajout-menu li:last-child {
+    border-bottom: none;
+}
+.header-nav .dropdown-ajout-menu a {
+    color: #105da1;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+}
+.header-nav .dropdown-ajout-menu a:hover {
+    color: #639b42;
+}
+</style>

@@ -90,6 +90,43 @@ include __DIR__ . '/includes/header.php';
                     </div>
                 </div>
 
+                <!-- SECTION EVENEMENTS A VENIR - Affichage des événements comme les actualités -->
+                <?php
+                $events_path = __DIR__ . '/data/events.json';
+                if (file_exists($events_path)) {
+                    $events = json_decode(file_get_contents($events_path), true);
+                    if (is_array($events) && count($events) > 0) {
+                        echo '<div class="card" style="margin-bottom:0.5rem;"><h2 class="section-title"><svg width="22" height="22" fill="none" stroke="#639b42" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Événements à venir</h2><div class="actus-cards-row">';
+                        foreach (array_slice($events, 0, 10) as $event) {
+                            echo '<div class="actus-card">';
+                            // Image en haut (optionnelle)
+                            echo '<div class="actus-card-img">';
+                            if (!empty($event['image'])) {
+                                echo '<img src="' . htmlspecialchars($event['image']) . '" alt="' . htmlspecialchars($event['titre']) . '">';
+                            } else {
+                                echo '<div style="width:100%;height:100%;background:linear-gradient(135deg,#639b42 0%,#105da1 100%);"></div>';
+                            }
+                            // Tag de type d'événement
+                            echo '<div class="actus-card-tag">' . htmlspecialchars($event['type']) . '</div>';
+                            echo '</div>';
+                            // Contenu
+                            echo '<div class="actus-card-content">';
+                            // Métadonnées
+                            echo '<div class="actus-card-meta">';
+                            echo '<span><svg width="16" height="16" fill="none" stroke="#105da1" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ' . htmlspecialchars($event['date']) . ' à ' . htmlspecialchars($event['heure']) . '</span>';
+                            echo '<span style="margin-left:10px;"><svg width="16" height="16" fill="none" stroke="#639b42" stroke-width="2" viewBox="0 0 24 24"><path d="M17 10.5V6a5 5 0 0 0-10 0v4.5"/><rect width="18" height="10" x="3" y="10.5" rx="2"/><path d="M8 16h.01"/></svg> ' . htmlspecialchars($event['lieu']) . '</span>';
+                            echo '</div>';
+                            // Titre
+                            echo '<div class="actus-card-title">' . htmlspecialchars($event['titre']) . '</div>';
+                            // Description courte
+                            echo '<div class="actus-card-desc">' . htmlspecialchars($event['description']) . '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                        echo '</div></div>';
+                    }
+                }
+                ?>
                 <!-- SECTION LIVRE D'OR - Interface de partage communautaire -->
                 <!-- Cette section permet aux utilisateurs de partager leurs expériences et témoignages -->
                 <div class="card" style="margin-bottom:0.5rem;">
